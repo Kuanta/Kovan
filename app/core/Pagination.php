@@ -68,16 +68,14 @@
 						array_push($hrefs,['href'=>$url.'/'.$i,'value'=>$i]);
 					}
 						
-				}
 				//Current page is near the end
 				}elseif(($this->totalPages > $this->linksToShow) && $this->totalPages-$this->currentPage>($this->$linksToShow-1)/2){
 					for($i=$this->totalPages-$this->linksToShow;$i<=$this->linksToShow;$i++){
 						array_push($hrefs,['href'=>$url.'/'.$i,'value'=>$i]);
 					}
 			
-				}
 				//Current Page is near the beginning
-				}elseif($this->totalPages>$this->linksToShow && $this->currentPage-($this->($linksToShow-1)/2>0){
+				}elseif($this->totalPages>$this->linksToShow && $this->currentPage-($this->linksToShow-1)/2>0){
 					for($i=1;$i<=$this->linksToShow;$i++){
 						array_push($hrefs,['href'=>$url.'/'.$i,'value'=>$i]);
 					}
@@ -90,13 +88,13 @@
 					}
 				}
 
-				if($this->hasPreviousPage){
-					array_shift($hrefs,['href'=>$url.'/'.($this->currentPage-1),'value'=>'Prev']);
-					array_shift($hrefs,['href'=>$url.'/'.'1','value'='First']);
+				if($this->hasPreviousPage()){
+					array_unshift($hrefs,['href'=>$url.'/'.($this->currentPage-1),'value'=>'Prev']);
+					array_unshift($hrefs,['href'=>$url.'/'.'1','value'=>'First']);
 				}
 				if($this->hasNextPage()){
-					array_push($hrefs,['hrefs'=>$url.'/'.($this->currentPage+1),'value'=>'Next']);
-					array_push($hrefs,'href'=>$url.'/'.$this->totalPages,'value'=>'Last');
+					array_push($hrefs,['href'=>$url.'/'.($this->currentPage+1),'value'=>'Next']);
+					array_push($hrefs,['href'=>$url.'/'.$this->totalPages,'value'=>'Last']);
 				}
 
 				return $hrefs;

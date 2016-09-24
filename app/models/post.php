@@ -55,7 +55,7 @@
 
 			
 
-			return ['posts'=>$this->db->resultset(),'hrefs'=>$pag->createLinks(PUBLIC_FOLDER.'display/listPosts/')];
+			return ['posts'=>$this->db->resultset(),'hrefs'=>$pag->createLinks(PUBLIC_FOLDER.'display/listPosts')];
 		}
 		public function getPostById($postId){
 			$this->db->query('Select 
