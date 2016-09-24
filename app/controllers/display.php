@@ -3,7 +3,7 @@
 
 		private $title='Posts';
 
-		public function listPosts(){
+		public function listPosts($curPage=1){
 			/*
 				This method will preview posts 
 			*/
@@ -14,7 +14,7 @@
 
 			$this->includeModel('post');
 			$model=new Post();
-			$posts=$model->getPosts();
+			$posts=$model->getPosts($curPage);
 
 			$this->sendData('posts',$posts,$view);
 

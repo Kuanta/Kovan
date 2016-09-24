@@ -4,7 +4,7 @@
 
 		public function listPosts(){
 			$this->contents=[
-				'previews/postsPreview.php'
+				'previews/postsPreview.php',
 			];
 			$this->outputContents();
 		}

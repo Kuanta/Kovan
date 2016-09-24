@@ -37,11 +37,26 @@
 			$this->db->execute();
 			header('Location:'.PUBLIC_FOLDER);
 		}
-		public function getPosts($orderBy='post_date',$ordering='desc'){
+		public function getPosts($page=1,$orderBy='post_date',$ordering='desc'){
+			//Get the total count for pagination...
+			$this->db->query('Select count(*) from posts left outer join users on posts.user_id=users.id');
+			$this->db->execute();
+			$result=$this->db->single(); //$result['count(*)']
+			
+
+			require_once(CORE_FOLDER.'Pagination.php');
+			$pag=new Pagination($page,$result['count(*)']);
+
 			$this->db->query('Select 
 				posts.id, title, content, post_date, users.id as user_id, username
-				from posts left outer join users on posts.user_id=users.id order by '.$orderBy.' '.$ordering);
+				from posts left outer join users on posts.user_id=users.id order by '.$orderBy.' '.$ordering.
+				' LIMIT '.$pag->perPage.' OFFSET '.$pag->getOffset());
 			$this->db->execute();
+
+			//Create 
+
+			for($i=0;$i<$pag->totalPages)
+
 			return $this->db->resultset();
 		}
 		public function getPostById($postId){

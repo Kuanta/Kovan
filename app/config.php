@@ -11,6 +11,7 @@
 	define('VIEWS_FOLDER','../app/views/');
 	define('ROOT_FOLDER','/Kovan/');
 	define('PUBLIC_FOLDER','/Kovan/public/');
+	defined('CORE_FOLDER') ? null : define('CORE_FOLDER','../app/core/');
 
 	//Validation Array Constants (used in models)
 	define('ERROR_ARRAY','errorArray');
