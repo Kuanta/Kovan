@@ -5,6 +5,7 @@
 		public function listPosts(){
 			$this->contents=[
 				'previews/postsPreview.php',
+				'paginationLinks.php'
 			];
 			$this->outputContents();
 		}

@@ -14,10 +14,12 @@
 
 			$this->includeModel('post');
 			$model=new Post();
-			$posts=$model->getPosts($curPage);
+			$result=$model->getPosts($curPage);
+			$posts=$result['posts'];
+			$hrefs=$result['hrefs'];
 
 			$this->sendData('posts',$posts,$view);
-
+			$this->sendData('hrefs',$hrefs,$view);
 			$view->listPosts();
 
 

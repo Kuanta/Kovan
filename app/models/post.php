@@ -53,11 +53,9 @@
 				' LIMIT '.$pag->perPage.' OFFSET '.$pag->getOffset());
 			$this->db->execute();
 
-			//Create 
+			
 
-			for($i=0;$i<$pag->totalPages)
-
-			return $this->db->resultset();
+			return ['posts'=>$this->db->resultset(),'hrefs'=>$pag->createLinks(PUBLIC_FOLDER.'display/listPosts/')];
 		}
 		public function getPostById($postId){
 			$this->db->query('Select 

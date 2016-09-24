@@ -1,7 +1,7 @@
 <div class='pagination'>
 <?php
 
-	foreach($data['paginationLinks'] as $link){
+	foreach($data['hrefs'] as $link){
 		?>
 		<a href='<?= $link["href"]?>'> <?= $link['value']?> </8a>
 		<?php
