@@ -4,9 +4,6 @@
 		private $title='Profile';
 
 		public function index($id){
-			$this->includeView('profileView');
-			$view=new ProfileView();
-			$this->sendData('title',$this->title,$view);
 
 			$this->includeModel('user');
 			$model=new User();
@@ -18,7 +15,10 @@
 			}else{
 				$user['following']=false;
 			}
-			
+			$this->includeView('profileView');
+			$view=new ProfileView();
+			$this->sendData('title',$user['username'].'\'s Profile',$view);
+
 			$this->sendData('user',$user,$view);
 			$view->index();
 

@@ -14,7 +14,8 @@
 		<?php
 			if(isset($_SESSION['user']) && $_SESSION['user']!=null){
 				?>
-				<li><a href=''><?=$_SESSION['user']['username']?></a></li>
+				<li><a href='<?=PUBLIC_FOLDER?>profile/index/<?= $_SESSION['user']['id']?>'>
+					<?=$_SESSION['user']['username']?></a></li>
 				<li><a href='<?= PUBLIC_FOLDER?>feed'>Feed</a></li>
 				<li><a href='<?= PUBLIC_FOLDER?>createPost'>Create Post</a></li>
 				<li><a href='<?= PUBLIC_FOLDER?>logout'>Logout</a></li>
