@@ -1,4 +1,4 @@
-<form action='/Kuantaria/public/login/submit' method='post'>
+<form action='<?= PUBLIC_FOLDER?>login/submit' method='post'>
 	<label for='password'>Username:</label>
 		<input type='text' id='username' name='username'>
 	<label for='password'>Password:</label>

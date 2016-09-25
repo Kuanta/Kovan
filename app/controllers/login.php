@@ -1,10 +1,15 @@
 <?php
 	class Login extends Controller{
 		public function index(){
-			$this->includeView('loginView');
-			$view=new LoginView();
-			$this->sendData('title','Login',$view);
-			$view->index();
+			if(!isset($_SESSION['user'])){
+				$this->includeView('loginView');
+				$view=new LoginView();
+				$this->sendData('title','Login',$view);
+				$view->index();
+			}else{
+				header('Location:'.PUBLIC_FOLDER);
+			}
+			
 		}
 		public function submit(){
 			$this->includeView('loginView');

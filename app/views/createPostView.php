@@ -1,26 +1,28 @@
 <?php
-	class RegisterView extends View{
+	
+	class CreatePostView extends View{
 		public function index(){
 			$this->contents=[
-				
-				'forms/registerForm.php'
+				'forms/createPostForm.php'
 			];
-			parent::outputContents();
+			$this->outputContents();
 		}
 		public function submit(){
+
 			if(isset($this->data['errors'])){
 				$this->contents=[
-				
-				'forms/registerForm.php',
+				'forms/createPostForm.php',
 				'errors.php'
 				];
 			}else{
 				$this->contents=[
-					
-					'messages/registerDone.php'
+					'echo'=>'Created Post'
 				];
 			}
-			parent::outputContents();
+			$this->outputContents();
+
 		}
 	}
+	
+
 ?>

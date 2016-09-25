@@ -5,10 +5,15 @@
 		private $title='Register';
 
 		public function index(){
-			$this->includeView('registerView');
-			$view=new RegisterView();
-			$this->sendData('title','Register',$view);
-			$view->index();
+			if(!isset($_SESSION['user']) || $_SESSION['user']==null){
+				$this->includeView('registerView');
+				$view=new RegisterView();
+				$this->sendData('title','Register',$view);
+				$view->index();
+			}else{
+				header('Location:'.PUBLIC_FOLDER);
+			}
+			
 		}
 		public function submit(){
 

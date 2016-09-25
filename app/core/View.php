@@ -18,8 +18,16 @@
 		public function outputContents(){
 			$data=$this->data;
 			$this->checkContents();
-			foreach ($this->contents as $content) {
-				include(CONTENTS_FOLDER.$content);
+			foreach ($this->contents as $key=>$value) {
+
+				if($key==='echo'){
+					//Echo the value
+					echo $value;
+				
+				}else{
+					include(CONTENTS_FOLDER.$value);
+				}
+				
 			}
 		}
 	}

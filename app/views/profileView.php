@@ -1,10 +1,12 @@
 <?php
-	class HomeView extends View{
+
+	class ProfileView extends View{
 		public function index(){
 			$this->contents=[
-				'displays/homeDisplay.php'
+				'displays/profileDisplay.php'
 			];
 			$this->outputContents();
 		}
 	}
+
 ?>

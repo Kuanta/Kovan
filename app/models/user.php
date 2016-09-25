@@ -11,6 +11,31 @@
 		public function __construct($username='',$password='',$email=''){
 			parent::__construct();
 		}
+		public function checkFollowing($id){
+			$this->db->query('select count(*) from follows where follower_id=:follower_id and followed_id=:followed_id');
+			$this->db->bind(':follower_id',$_SESSION['user']['id']);
+			$this->db->bind('followed_id',$id);
+			$result=$this->db->single();
+			return $result['count(*)'];
+		}
+		public function findById($id){
+			$this->db->query('select * from users where id=:id');
+			$this->db->bind(':id',$id);
+			$this->db->execute();
+			return $this->db->single();
+		}
+		public function follow($id){
+			$this->db->query('insert into follows (follower_id,followed_id) values(:follower_id,:followed_id)');
+			$this->db->bind(':follower_id',$_SESSION['user']['id']);
+			$this->db->bind('followed_id',$id);
+			$this->db->execute();
+		}
+		public function unfollow($id){
+			$this->db->query('delete from follows where follower_id=:follower_id and followed_id=:followed_id');
+			$this->db->bind(':follower_id',$_SESSION['user']['id']);
+			$this->db->bind('followed_id',$id);
+			$this->db->execute();
+		}
 		public function checkLoginInfo(){
 			 /*
 			This method will check Post datas. It will return the needed array at the end

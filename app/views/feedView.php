@@ -1,8 +1,8 @@
 <?php
-	class HomeView extends View{
+	class FeedView extends View{
 		public function index(){
 			$this->contents=[
-				'displays/homeDisplay.php'
+				'previews/postsPreview.php'
 			];
 			$this->outputContents();
 		}
