@@ -90,7 +90,7 @@
 			$this->db->bind(':following_id',$_SESSION['user']['id']);
 			$this->db->execute();
 
-			return ['posts'=>$this->db->resultset(),'hrefs'=>$pag->createLinks(PUBLIC_FOLDER.'feed')];
+			return ['posts'=>$this->db->resultset(),'hrefs'=>$pag->createLinks(PUBLIC_FOLDER.'feed/index')];
 		}
 		public function search($page=1,$orderBy='post_date',$ordering='desc',$keyword=''){
 			$searchBy='title';

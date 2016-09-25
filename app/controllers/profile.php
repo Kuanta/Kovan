@@ -8,7 +8,7 @@
 			$this->includeModel('user');
 			$model=new User();
 			$user=$model->findById($id);
-
+			
 			if($model->checkFollowing($id)>0){
 				//Already following
 				$user['following']=true;
