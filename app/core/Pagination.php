@@ -33,7 +33,12 @@
 			return ceil($this->totalCount/$this->perPage);
 		}
 		public function getOffset(){
-			return ($this->currentPage-1)*$this->perPage;
+			$result=($this->currentPage-1)*$this->perPage;
+			if($result>=0){
+				return $result;
+			}else{
+				return 0;
+			}
 		}
 		public function hasNextPage(){
 			if($this->currentPage+1<=$this->totalPages){
@@ -59,7 +64,7 @@
 				}
 			*/
 			if($this->totalPages==1){
-				$hrefs['current']=1;
+				array_push($hrefs,['href'=>$url.'/1','value'=>'1']);
 			}else{
 				//Current page is somewhere in middle
 				if(($this->currentPage-(($this->linksToShow-1)/2)) > 0 && 
@@ -83,7 +88,7 @@
 
 				//Default
 				else{
-					for($i=0;$i<$this->totalPages;$i++){
+					for($i=1;$i<=$this->totalPages;$i++){
 						array_push($hrefs,['href'=>$url.'/'.$i,'value'=>$i]);
 					}
 				}

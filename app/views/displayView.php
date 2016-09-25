@@ -2,11 +2,16 @@
 	
 	class DisplayView extends View{
 
-		public function listPosts(){
-			$this->contents=[
-				'previews/postsPreview.php',
-				'paginationLinks.php'
-			];
+		public function listPosts($foundPosts){
+			if($foundPosts){
+				$this->contents=[
+					'previews/postsPreview.php',
+					'paginationLinks.php'
+				];
+			}else{
+				$this->contents=['messages/noPosts.php'];
+			}
+			
 			$this->outputContents();
 		}
 		public function displayPost(){
