@@ -12,11 +12,16 @@
 			parent::__construct();
 		}
 		public function checkFollowing($id){
-			$this->db->query('select count(*) from follows where follower_id=:follower_id and followed_id=:followed_id');
-			$this->db->bind(':follower_id',$_SESSION['user']['id']);
-			$this->db->bind('followed_id',$id);
-			$result=$this->db->single();
-			return $result['count(*)'];
+			if(isset($_SESSION['user']) && $_SESSION['user']!=null){
+				$this->db->query('select count(*) from follows where follower_id=:follower_id and followed_id=:followed_id');
+				$this->db->bind(':follower_id',$_SESSION['user']['id']);
+				$this->db->bind('followed_id',$id);
+				$result=$this->db->single();
+				return $result['count(*)'];
+			}else{
+				return 0;
+			}
+			
 		}
 		public function findById($id){
 			$this->db->query('select * from users where id=:id');
